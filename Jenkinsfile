@@ -12,7 +12,7 @@ node {
 pipeline {
   agent any
  
-  tools {phyton "python"}
+  tools {shiningpanda "python"}
  
   stages {
     stage('Example') {
