@@ -10,15 +10,17 @@ node {
   }
 }
 pipeline {
-  agent any
- 
-  tools {jenkins.plugins.shiningpanda.tools.PythonInstallation "python"}
- 
+  agent any 
   stages {
-    stage('Example') {
+    stage('build') {
       steps {
-        sh 'pip config ls'
+        sh 'pip install -r requirements.txt'
       }
+    }
+    stage('test') {
+      steps {
+        sh 'python test.py'
+      }   
     }
   }
 }
