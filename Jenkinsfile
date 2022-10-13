@@ -14,10 +14,3 @@ node {
     }
   }
 }
-  stage('test') {
-    steps {
-      sh 'python -m pytest'
-      sh 'python test.py'
-    }   
-  }
-} 
