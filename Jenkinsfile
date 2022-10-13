@@ -2,6 +2,11 @@ node {
   stage('SCM') {
     checkout scm
   }
+  
+  stage('Build') {
+        git 'https://github.com/katiagsoto/DOTT.git'
+  }    
+      
   stage('SonarQube Analysis') {
     def scannerHome = tool 'sonarqubescanner';
     withSonarQubeEnv() {
@@ -9,17 +14,10 @@ node {
     }
   }
 }
-pipeline {
-  agent any 
-  stage('Build') {
-    steps {
-      git branch: 'master', url: git 'https://github.com/katiagsoto/DOTT.git'
-    }
-  }
   stage('test') {
     steps {
       sh 'python -m pytest'
       sh 'python test.py'
     }   
   }
-}  
+} 
