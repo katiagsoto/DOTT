@@ -11,7 +11,8 @@ node {
 }
 pipeline {
   agent any
-  stage('Unit Testing') { // Perform unit testing
+  tool {shiningpanda "phyton"}
+  stage('Unit Testing') {
       steps {
         script {
           sh """
