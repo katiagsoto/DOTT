@@ -19,6 +19,6 @@ node {
         
     def pyHome = tool 'pytest'
     withpytest(){
-    sh 'pytest tests.py -v'
+    sh 'python3 -m pytest'
    }
  }
