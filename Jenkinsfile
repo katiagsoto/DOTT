@@ -6,14 +6,7 @@ node {
   stage('Build') {
         git 'https://github.com/katiagsoto/DOTT.git'
   }    
-      
-  stage('SonarQube Analysis') {
-    def scannerHome = tool 'sonarqubescanner';
-    withSonarQubeEnv() {
-      sh "${scannerHome}/bin/sonar-scanner"
-    }
-  }
-}
+  
   stage('Test') {
     git 'https://github.com/katiagsoto/DOTT.git'
         
@@ -22,3 +15,11 @@ node {
     sh 'python3 -m pytest'
    }
  }
+  
+  stage('SonarQube Analysis') {
+    def scannerHome = tool 'sonarqubescanner';
+    withSonarQubeEnv() {
+      sh "${scannerHome}/bin/sonar-scanner"
+    }
+  }
+}
