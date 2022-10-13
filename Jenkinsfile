@@ -10,7 +10,7 @@ node {
   stage('Test') {
     git 'https://github.com/katiagsoto/DOTT.git'
         
-    def pyHome = tool 'pytest'
+    def pyHome = tool 'python'
     withpytest(){
     sh 'python3 -m pytest'
    }
