@@ -12,7 +12,7 @@ node {
 pipeline {
   agent any
  
-  tools {jenkins.plugins.shiningpanda.tools.PythonInstallation}
+  tools {python "python"}
  
   stages {
     stage('Unit Test') {
