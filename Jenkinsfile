@@ -11,13 +11,11 @@ node {
 }
 pipeline {
   agent any
- 
-  tools {python "python"}
- 
-  stages {
-    stage('Unit Test') {
+    stage('Unit Testing') { // Perform unit testing
       steps {
-        sh 'pytest config ls'
+        script {
+          sh """
+          python -m unittest discover -s tests.py
       }
     }
         stage('Deploy') {
