@@ -10,20 +10,20 @@ node {
   }
 }
 pipeline {
-  agent any 
-  stage('Build') {
-     steps {
-        git branch: 'master', url: git 'https://github.com/katiagsoto/DOTT.git'
+  agent any
+ 
+  tools {pytest "pytest"}
+ 
+  stages {
+    stage('Unit Test') {
+      steps {
+        sh 'pytest config ls'
       }
     }
-    stage('test') {
-      steps {
-        sh 'python -m pytest'
-      }   
-    }
-     stage('Deploy') {
+        stage('Deploy') {
             steps {
                 echo 'Deploying....'
             }
         }
     }
+}
