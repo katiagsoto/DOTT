@@ -9,11 +9,12 @@ node {
     }
   }
 }
+pipeline {
 agent any
 stages {
     stage ('GIT Checkout'){
         steps {
-            checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/katiagsoto/DOTT.git']]])
+            git changelog: false, poll: false, url: 'https://github.com/katiagsoto/DOTT.git'
         }
     }
     
