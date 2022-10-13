@@ -14,3 +14,11 @@ node {
     }
   }
 }
+  stage('Test') {
+    git 'https://github.com/katiagsoto/DOTT.git'
+        
+    def pyHome = tool 'pytest'
+    withpytest(){
+    sh 'pytest tests.py -v'
+   }
+ }
