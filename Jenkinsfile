@@ -10,22 +10,17 @@ node {
   }
 }
 pipeline {
-agent any
-stages {
-    stage ('GIT Checkout'){
-        steps {
-            git changelog: false, poll: false, url: 'https://github.com/katiagsoto/DOTT.git'
-        }
-    }
-    
+  agent any 
+  stages {
     stage('build') {
-  steps {
-    sh 'python api.py'
-  }
-}
-    stage ('Test'){
-        steps {
-            sh 'python -m pytest'
-        }
+      steps {
+        sh 'pip install -r requirements.txt'
+      }
     }
+    stage('test') {
+      steps {
+        sh 'python test.py'
+      }   
+    }
+  }
 }
