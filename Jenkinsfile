@@ -11,11 +11,13 @@ node {
 }
 pipeline {
   agent any
-    stage('Unit Testing') { // Perform unit testing
+  stage('Unit Testing') { // Perform unit testing
       steps {
         script {
           sh """
-          python -m unittest discover -s tests.py
+          python -m unittest discover -s tests/unit
+          """
+        }
       }
     }
         stage('Deploy') {
