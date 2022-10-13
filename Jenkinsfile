@@ -14,7 +14,6 @@ pipeline {
   stage('Build') {
      steps {
         git branch: 'master', url: git 'https://github.com/katiagsoto/DOTT.git'
-        sh 'python ops.py'
       }
     }
     stage('test') {
