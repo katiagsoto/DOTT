@@ -11,15 +11,15 @@ node {
 }
 pipeline {
   agent any 
-  stages {
-    stage('build') {
-      steps {
-        sh 'python3 api.py'
+  stage('Build') {
+     steps {
+        git branch: 'master', url: git 'https://github.com/katiagsoto/DOTT.git'
+        sh 'python ops.py'
       }
     }
     stage('test') {
       steps {
-        sh 'python3 -m pytest'
+        sh 'python -m pytest'
       }   
     }
   }
