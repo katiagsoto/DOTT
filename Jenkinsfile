@@ -14,12 +14,12 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'python api.py'
+        sh 'python3 api.py'
       }
     }
     stage('test') {
       steps {
-        sh 'python test.py'
+        sh 'python3 -m pytest'
       }   
     }
   }
