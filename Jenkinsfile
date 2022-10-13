@@ -21,5 +21,10 @@ pipeline {
         sh 'python -m pytest'
       }   
     }
-  }
+     stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
 }
