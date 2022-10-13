@@ -7,15 +7,6 @@ node {
         git 'https://github.com/katiagsoto/DOTT.git'
   }    
   
-  stage('Test') {
-    git 'https://github.com/katiagsoto/DOTT.git'
-        
-    def pyHome = tool 'python'
-    withpytest(){
-    sh 'python3 -m pytest'
-   }
- }
-  
   stage('SonarQube Analysis') {
     def scannerHome = tool 'sonarqubescanner';
     withSonarQubeEnv() {
@@ -23,3 +14,12 @@ node {
     }
   }
 }
+  
+  stage('Test') {
+    git 'https://github.com/katiagsoto/DOTT.git'
+        
+    def pyHome = tool 'python'
+    withpython (){
+    sh 'python3 -m pytest'
+   }
+ }
