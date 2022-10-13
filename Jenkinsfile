@@ -9,14 +9,23 @@ node {
     }
   }
 }
-pipeline {
-  stages {
-    stage('build') {
-      steps {
-        git 'https://github.com/katiagsoto/DOTT.git'
-        sh 'python api.py'
-      }
+agent any
+stages {
+    stage ('GIT Checkout'){
+        steps {
+            checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/katiagsoto/DOTT.git']]])
+        }
     }
-     stage('test') {
-      steps {
-        sh 'python test.py'
+    
+    stage('build') {
+  steps {
+    sh 'python api.py'
+  }
+}
+    stage ('Test'){
+        steps {
+            sh 'python -m pytest'
+        }
+    }
+}
+}
